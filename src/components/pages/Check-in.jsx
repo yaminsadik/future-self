@@ -1,3 +1,3 @@
-export default function checkin(){
+export default function Checkin(){
     return <div>Check-in</div>;
 }
