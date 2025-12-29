@@ -18,11 +18,10 @@ export default function Setup() {
   }, [category]);
 
   useEffect(() => {
-  // When the category changes, reset dropdown to "no selection"
-  // so the placeholder text is shown.
-  setSelectionId("");
-}, [category]);
-
+    // When the category changes, reset dropdown to "no selection"
+    // so the placeholder text is shown.
+    setSelectionId("");
+  }, [category]);
 
   const canCalculate = Boolean(category) && Boolean(selectionId);
 
@@ -66,7 +65,14 @@ export default function Setup() {
         <button
           type="button"
           disabled={!canCalculate}
-          onClick={() => nav("/results", { state: { category, selectionId } })}
+          onClick={() => {
+            const selectedLabel = config.options.find(
+              (option) => option.id === selectionId
+            )?.label;
+            nav("/results", {
+              state: { category, selectionId, selectedLabel },
+            });
+          }}
           className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Calculate Results
