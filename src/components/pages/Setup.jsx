@@ -17,14 +17,12 @@ export default function Setup() {
     return CATEGORY_OPTIONS?.[category] ?? null;
   }, [category]);
 
-  // Reset dropdown when category changes, but only if config exists
   useEffect(() => {
-    if (!config) {
-      setSelectionId("");
-      return;
-    }
-    setSelectionId(config.defaultId ?? "");
-  }, [config]);
+  // When the category changes, reset dropdown to "no selection"
+  // so the placeholder text is shown.
+  setSelectionId("");
+}, [category]);
+
 
   const canCalculate = Boolean(category) && Boolean(selectionId);
 
