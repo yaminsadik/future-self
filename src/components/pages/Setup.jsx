@@ -73,7 +73,7 @@ export default function Setup() {
               state: { category, selectionId, selectedLabel },
             });
           }}
-          className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+          className="btn-primary-sm disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Calculate Results
         </button>

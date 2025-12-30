@@ -29,7 +29,7 @@ export default function HomePrac() {
 
         <div className="mt-12 flex justify-center">
             <button type = "button" onClick={() => nav("/setup")}
-            className="btn-primary w-full max-w-[240px]"> Start Comparison </button>
+            className="btn-primary-sm"> Start Comparison </button>
         </div>
         <p className="mt-3 text-center text-sm text-textSecondary"> Patterns only, not medical advice. </p>
 

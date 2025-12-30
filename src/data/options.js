@@ -4,25 +4,24 @@ export const CATEGORY_OPTIONS = {
   Sleep: {
     label: "Sleep (hours)",
     options: [
-      { id: "sleep_lt6", label: "<6 hours" },
-      { id: "sleep_6_8", label: "6-8 hours" },
-      { id: "sleep_gt8", label: ">8 hours" },
+      { id: "sleep_lt6", label: "Less than 6 hours" },
+      { id: "sleep_6_8", label: "6 to 8 hours" },
+      { id: "sleep_gt8", label: "More than 8 hours" },
     ],
   },
   Food: {
     label: "Food",
     options: [
-      { id: "food_light", label: "Light" },
-      { id: "food_normal", label: "Normal" },
-      { id: "food_heavy", label: "Heavy" },
+      { id: "food_proper_meal", label: "Proper meal" },
+      { id: "food_skip_meal", label: "Skip meal" },
     ],
   },
   Caffeine: {
-    label: "Caffeine (cups)",
+    label: "Caffeine (mg)",
     options: [
-      { id: "caff_0", label: "0" },
-      { id: "caff_1", label: "1" },
-      { id: "caff_2p", label: "2+" },
+      { id: "caff_0mg", label: "0 mg" },
+      { id: "caff_le200", label: "200 mg or less" },
+      { id: "caff_gt200", label: "More than 200 mg" },
     ],
   },
 };

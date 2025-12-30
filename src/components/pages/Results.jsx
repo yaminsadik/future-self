@@ -79,7 +79,7 @@ export default function Results() {
       {renderTable("Energy", energyTableData, "energy")}
       {renderTable("Focus", focusTableData, "focus")}
       <div>
-        <div className="mt-6">
+        <div className="mt-6 flex flex-col items-center">
           <button
             type="button"
             onClick={() => nav("/resultsview")}
