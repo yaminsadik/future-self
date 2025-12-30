@@ -1,38 +1,42 @@
-import { useLocation } from 'react-router-dom';
-import { useState } from 'react';
-import { SAMPLE_SIZE_N } from '../../data/options';
-import { SURVEY_RESULTS } from '../../data/surveyResults';
-import WhySeeingModal from './Why';
-
+import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { SAMPLE_SIZE_N } from "../../data/options";
+import { SURVEY_RESULTS } from "../../data/surveyResults";
+import WhySeeingModal from "./Why";
 
 export default function Results() {
   const [whyOpen, setWhyOpen] = useState(false);
   const location = useLocation();
+  const nav = useNavigate();
   const { category, selectionId, selectedLabel } = location.state || {};
-  
+
   const data = SURVEY_RESULTS[selectionId];
-  
+
   const moodData = data?.Mood;
   const energyData = data?.Energy;
   const focusData = data?.Focus;
-  
-  const createTableData = (metricData) => metricData ? [
-    { condition: "Much Worse", percentage: `${metricData.muchWorse}%` },
-    { condition: "Worse", percentage: `${metricData.worse}%` },
-    { condition: "Normal", percentage: `${metricData.normal}%` },
-    { condition: "Better", percentage: `${metricData.better}%` },
-    { condition: "Much Better", percentage: `${metricData.muchBetter}%` },
-  ] : [];
-  
+
+  const createTableData = (metricData) =>
+    metricData
+      ? [
+          { condition: "Much Worse", percentage: `${metricData.muchWorse}%` },
+          { condition: "Worse", percentage: `${metricData.worse}%` },
+          { condition: "Normal", percentage: `${metricData.normal}%` },
+          { condition: "Better", percentage: `${metricData.better}%` },
+          { condition: "Much Better", percentage: `${metricData.muchBetter}%` },
+        ]
+      : [];
+
   const moodTableData = createTableData(moodData);
   const energyTableData = createTableData(energyData);
   const focusTableData = createTableData(focusData);
-  
+
   const renderTable = (title, tableData, metric) => (
     <div className="mt-8 rounded-2xl border border-border bg-surface p-6 text-left">
       <h2 className="text-2xl font-semibold">{title}</h2>
       <p className="mt-2 text-textSecondary">
-        Among survey respondents who reported {selectedLabel}, here is how they rated their {metric}.
+        Among survey respondents who reported {selectedLabel}, here is how they
+        rated their {metric}.
       </p>
       <table className="mt-4 w-full">
         <thead>
@@ -52,20 +56,22 @@ export default function Results() {
       </table>
     </div>
   );
-  
+
   return (
     <div className="text-center">
       <div className="mt-6 text-2xl font-semibold">Results</div>
       <div className="mt-8 rounded-2xl border border-border bg-surface p-4 text-left">
-        <h2 className="text-2xl font-semibold">Comparison</h2>
+        <h2 className="text-2xl font-semibold">Overview</h2>
         <div className="mt-4 text-lg text-textSecondary">
           Category: <span className="text-textPrimary">{category}</span>
         </div>
         <div className="mt-4 text-lg text-textSecondary">
-          Option: <span className="text-textPrimary">{selectedLabel}</span>
+          Selected Option:{" "}
+          <span className="text-textPrimary">{selectedLabel}</span>
         </div>
         <div className="mt-4">
-          Sample size (n): <span className="text-textPrimary">{SAMPLE_SIZE_N}</span>
+          Sample size :{" "}
+          <span className="text-textPrimary">{SAMPLE_SIZE_N}</span>
         </div>
       </div>
 
@@ -73,18 +79,26 @@ export default function Results() {
       {renderTable("Energy", energyTableData, "energy")}
       {renderTable("Focus", focusTableData, "focus")}
       <div>
+        <div className="mt-6">
+          <button
+            type="button"
+            onClick={() => nav("/resultsview")}
+            className="btn-primary-sm"
+          >
+            Explore other options
+          </button>
 
-      <button
-        type="button"
-        onClick={() => setWhyOpen(true)}
-        className="mt-6 underline text-primary font-semibold cursor-pointer "
-      >
-        Why am I seeing this?
-      </button>
+          <button
+            type="button"
+            onClick={() => setWhyOpen(true)}
+            className="mt-6 underline text-primary font-semibold cursor-pointer"
+          >
+            Why am I seeing this?
+          </button>
 
-      <WhySeeingModal open={whyOpen} onClose={() => setWhyOpen(false)} />
+          <WhySeeingModal open={whyOpen} onClose={() => setWhyOpen(false)} />
+        </div>
+      </div>
     </div>
-    </div>
-      
   );
 }
