@@ -1,8 +1,12 @@
 import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
 import { SAMPLE_SIZE_N } from '../../data/options';
 import { SURVEY_RESULTS } from '../../data/surveyResults';
+import WhySeeingModal from './Why';
+
 
 export default function Results() {
+  const [whyOpen, setWhyOpen] = useState(false);
   const location = useLocation();
   const { category, selectionId, selectedLabel } = location.state || {};
   
@@ -24,9 +28,12 @@ export default function Results() {
   const energyTableData = createTableData(energyData);
   const focusTableData = createTableData(focusData);
   
-  const renderTable = (title, tableData) => (
+  const renderTable = (title, tableData, metric) => (
     <div className="mt-8 rounded-2xl border border-border bg-surface p-6 text-left">
       <h2 className="text-2xl font-semibold">{title}</h2>
+      <p className="mt-2 text-textSecondary">
+        Among survey respondents who reported {selectedLabel}, here is how they rated their {metric}.
+      </p>
       <table className="mt-4 w-full">
         <thead>
           <tr className="border-b border-border">
@@ -43,9 +50,6 @@ export default function Results() {
           ))}
         </tbody>
       </table>
-      <div className="mt-4 text-sm text-textSecondary">
-        Confidence: Medium • n={SAMPLE_SIZE_N}
-      </div>
     </div>
   );
   
@@ -65,9 +69,22 @@ export default function Results() {
         </div>
       </div>
 
-      {renderTable("Mood", moodTableData)}
-      {renderTable("Energy", energyTableData)}
-      {renderTable("Focus", focusTableData)}
+      {renderTable("Mood", moodTableData, "mood")}
+      {renderTable("Energy", energyTableData, "energy")}
+      {renderTable("Focus", focusTableData, "focus")}
+      <div>
+
+      <button
+        type="button"
+        onClick={() => setWhyOpen(true)}
+        className="mt-6 underline text-primary font-semibold cursor-pointer "
+      >
+        Why am I seeing this?
+      </button>
+
+      <WhySeeingModal open={whyOpen} onClose={() => setWhyOpen(false)} />
     </div>
+    </div>
+      
   );
 }
