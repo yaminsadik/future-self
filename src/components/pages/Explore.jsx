@@ -2,11 +2,13 @@ import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import SelectField from "../SelectField";
 import { CATEGORY_OPTIONS, SAMPLE_SIZE_N } from "../../data/options";
-import { SURVEY_RESULTS } from "../../data/surveyResults";
+import { useSurveyQuery } from "../../api/useSurveyQuery";
+
+
 
 const CATEGORIES = ["Sleep", "Food", "Caffeine"];
 
-export default function Results() {
+export default function Explore() {
   const location = useLocation();
   const nav = useNavigate();
 
@@ -14,6 +16,8 @@ export default function Results() {
 
   const [category, setCategory] = useState(initial.category ?? null);
   const [selectionId, setSelectionId] = useState(initial.selectionId ?? "");
+
+  const { data: surveyData, error, isLoading } = useSurveyQuery();
 
   const config = useMemo(() => {
     if (!category) return null;
@@ -29,7 +33,7 @@ export default function Results() {
     return config.options.find((o) => o.id === selectionId)?.label ?? "";
   }, [config, selectionId]);
 
-  const data = selectionId ? SURVEY_RESULTS?.[selectionId] : null;
+  const data = selectionId ? surveyData?.[selectionId] : null;
 
   const createTableData = (metricData) =>
     metricData

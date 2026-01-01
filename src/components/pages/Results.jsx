@@ -82,7 +82,7 @@ export default function Results() {
         <div className="mt-6 flex flex-col items-center">
           <button
             type="button"
-            onClick={() => nav("/resultsview")}
+            onClick={() => nav("/explore")}
             className="btn-primary-sm"
           >
             Explore other options
