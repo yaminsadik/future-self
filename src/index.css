@@ -5,55 +5,132 @@
   --color-bg: #F7FAF9; 
   --color-textSecondary: #4B5B5A;
   --color-textPrimary: #0F1F1E;
-  --color-border: #808080;
+  --color-border: #D1D5DB;
   --color-surface: #FFFFFF;
   --color-primary: #1F6F6B;
   --color-modal: #DFE6E4;
 
-
-
   --radius-btn: 12px;
-
-  --radius-card: 12px;
+  --radius-card: 16px;
   --radius-row: 12px;
-
 }
 
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
 
 @layer components {
   .btn-primary {
-    @apply cursor-pointer rounded-btn bg-primary text-white border border-border
-      px-6 py-4 text-2xl font-normal
-      transition-colors duration-150
-      hover:opacity-90 active:opacity-90
-      focus:outline-none focus:ring-2 focus:ring-primary/30;
+    @apply cursor-pointer rounded-btn bg-primary text-white border border-primary
+      px-6 py-4 text-xl font-medium
+      transition-all duration-200
+      hover:bg-primary/90 active:scale-[0.98]
+      focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2;
   }
+
   .btn-secondary {
     @apply inline-flex items-center justify-center
-      rounded-full border border-border
-      bg-surface px-5 py-2
-      text-textPrimary cursor-pointer
-      transition-colors
-      hover:bg-primary hover:text-white hover:border-primary
-      focus:outline-none focus:ring-2 focus:ring-primary/30;
-  } 
+      rounded-btn border border-border
+      bg-surface px-5 py-3
+      text-textPrimary font-medium cursor-pointer
+      transition-all duration-200
+      hover:bg-gray-50 hover:border-primary/50
+      active:scale-[0.98]
+      focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2;
+  }
+
   .btn-secondary-active {
     @apply 
       inline-flex items-center justify-center
-      rounded-full border border-primary
-      bg-primary px-5 py-2
-      text-white cursor-pointer
-      transition-colors
-      hover:bg-primary/90 hover:text-white hover:border-primary
-      focus:outline-none focus:ring-2 focus:ring-primary/30;
-      }
-  .btn-primary-sm {
-    @apply cursor-pointer rounded-btn bg-primary text-white border border-border
-      px-5 py-3 text-lg font-normal
-      transition-colors duration-150
-      hover:opacity-90 active:opacity-90
-      focus:outline-none focus:ring-2 focus:ring-primary/30;
+      rounded-btn border-2 border-primary
+      bg-primary/10 px-5 py-3
+      text-primary font-semibold cursor-pointer
+      transition-all duration-200
+      hover:bg-primary/15
+      focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2;
   }
+
+  .btn-primary-sm {
+    @apply cursor-pointer rounded-btn bg-primary text-white border border-primary
+      px-5 py-3 text-base font-medium
+      transition-all duration-200
+      hover:bg-primary/90 active:scale-[0.98]
+      focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2;
+  }
+
+  /* Card styles */
+  .card {
+    @apply rounded-card border border-border bg-surface p-6;
+  }
+
+  .card-highlight {
+    @apply rounded-card border-2 border-primary/30 bg-primary/5 p-6;
+  }
+
+  /* Form elements */
+  .input {
+    @apply w-full appearance-none
+      rounded-row border border-border bg-surface
+      px-4 py-3
+      text-base text-textPrimary
+      placeholder:text-textSecondary/60
+      transition-colors duration-200
+      focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20;
+  }
+
+  /* Score bar styles */
+  .score-bar {
+    @apply h-3 bg-gray-200 rounded-full overflow-hidden;
+  }
+
+  .score-bar-fill {
+    @apply h-full rounded-full transition-all duration-500;
+  }
+
+  /* Tag/badge styles */
+  .badge-primary {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-primary/20 text-primary;
+  }
+
+  .badge-neutral {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-textSecondary;
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
 }
 
 
