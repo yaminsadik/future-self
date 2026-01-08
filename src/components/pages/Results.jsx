@@ -59,7 +59,7 @@ export default function Results() {
         <button
           type="button"
           onClick={() => nav("/setup")}
-          className="btn-primary-sm mt-8"
+          className="btn-primary-sm mt-8 cursor-pointer"
         >
           Start Comparison
         </button>
@@ -74,7 +74,7 @@ export default function Results() {
         <button
           type="button"
           onClick={() => nav("/setup")}
-          className="absolute left-0 top-4 text-textPrimary hover:text-primary transition-colors"
+          className="absolute left-0 top-4 text-textPrimary hover:text-primary transition-colors cursor-pointer"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -234,7 +234,7 @@ export default function Results() {
               },
             })
           }
-          className="btn-primary-sm w-full"
+          className="btn-primary-sm w-full cursor-pointer"
         >
           View Detailed Breakdown
         </button>
@@ -243,14 +243,14 @@ export default function Results() {
           <button
             type="button"
             onClick={() => nav("/setup")}
-            className="btn-secondary flex-1"
+            className="btn-secondary flex-1 cursor-pointer"
           >
             New Comparison
           </button>
           <button
             type="button"
             onClick={() => nav("/")}
-            className="btn-secondary flex-1"
+            className="btn-secondary flex-1 cursor-pointer"
           >
             Home
           </button>

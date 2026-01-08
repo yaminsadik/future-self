@@ -48,7 +48,7 @@ export default function WhySeeingModal({ open, onClose }) {
           </ul>
 
           <div className="mt-8 flex justify-center">
-            <button type="button" onClick={onClose} className="btn-primary-sm">
+            <button type="button" onClick={onClose} className="btn-primary-sm cursor-pointer">
               Got it!
             </button>
           </div>

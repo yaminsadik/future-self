@@ -75,7 +75,7 @@ export default function Setup() {
         <button
           type="button"
           onClick={() => nav("/")}
-          className="absolute left-0 top-4 text-textPrimary hover:text-primary transition-colors"
+          className="absolute left-0 top-4 text-textPrimary hover:text-primary transition-colors cursor-pointer"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -99,7 +99,7 @@ export default function Setup() {
                 key={c.id}
                 type="button"
                 onClick={() => setCategory(c.id)}
-                className={`flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all ${
+                className={`flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all cursor-pointer ${
                   isActive
                     ? "bg-primary/10 border-primary"
                     : "bg-surface border-border hover:border-primary/50"
@@ -133,7 +133,7 @@ export default function Setup() {
                   setShowDropdownA(!showDropdownA);
                   setShowDropdownB(false);
                 }}
-                className={`w-full rounded-full border bg-surface px-4 py-3 pr-12 text-base text-left transition-colors ${
+                className={`w-full rounded-full border bg-surface px-4 py-3 pr-12 text-base text-left transition-colors cursor-pointer ${
                   showDropdownA ? "border-primary ring-2 ring-primary/20" : "border-primary"
                 }`}
               >
@@ -162,7 +162,7 @@ export default function Setup() {
                             setOptionA(o.id);
                             setShowDropdownA(false);
                           }}
-                          className={`w-full px-4 py-3 text-left transition-colors ${
+                          className={`w-full px-4 py-3 text-left transition-colors cursor-pointer ${
                             isSelected
                               ? "bg-primary/10 text-primary font-medium"
                               : "text-textPrimary hover:bg-gray-50"
@@ -187,7 +187,7 @@ export default function Setup() {
                   setShowDropdownB(!showDropdownB);
                   setShowDropdownA(false);
                 }}
-                className={`w-full rounded-full border bg-surface px-4 py-3 pr-12 text-base text-left transition-colors ${
+                className={`w-full rounded-full border bg-surface px-4 py-3 pr-12 text-base text-left transition-colors cursor-pointer ${
                   showDropdownB ? "border-primary ring-2 ring-primary/20" : "border-primary"
                 }`}
               >
@@ -216,7 +216,7 @@ export default function Setup() {
                             setOptionB(o.id);
                             setShowDropdownB(false);
                           }}
-                          className={`w-full px-4 py-3 text-left transition-colors ${
+                          className={`w-full px-4 py-3 text-left transition-colors cursor-pointer ${
                             isSelected
                               ? "bg-primary/10 text-primary font-medium"
                               : "text-textPrimary hover:bg-gray-50"
@@ -245,7 +245,7 @@ export default function Setup() {
               <button
                 type="button"
                 onClick={() => setShowOutcomeDropdown(!showOutcomeDropdown)}
-                className="w-full rounded-full border border-border bg-surface px-4 py-3 pr-12 text-base text-left focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                className="w-full rounded-full border border-border bg-surface px-4 py-3 pr-12 text-base text-left focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer"
               >
                 <span className={priorities.length > 0 ? "text-textPrimary" : "text-textSecondary"}>
                   {priorities.length > 0
@@ -269,7 +269,7 @@ export default function Setup() {
                         key={outcome.id}
                         type="button"
                         onClick={() => togglePriority(outcome.id)}
-                        className="w-full px-4 py-3 text-left flex items-center justify-between hover:bg-gray-50 first:rounded-t-xl last:rounded-b-xl"
+                        className="w-full px-4 py-3 text-left flex items-center justify-between hover:bg-gray-50 first:rounded-t-xl last:rounded-b-xl cursor-pointer"
                       >
                         <span className="text-textPrimary">{outcome.label}</span>
                         <span
@@ -288,7 +288,7 @@ export default function Setup() {
                     <button
                       type="button"
                       onClick={() => setShowOutcomeDropdown(false)}
-                      className="w-full py-2 text-sm text-primary font-medium"
+                      className="w-full py-2 text-sm text-primary font-medium cursor-pointer"
                     >
                       Done
                     </button>
@@ -311,7 +311,7 @@ export default function Setup() {
           onClick={handleContinue}
           className={`px-12 py-3 rounded-xl text-base font-medium transition-all ${
             canContinue
-              ? "bg-primary text-white hover:bg-primary/90"
+              ? "bg-primary text-white hover:bg-primary/90 cursor-pointer"
               : "bg-primary/50 text-white/80 cursor-not-allowed"
           }`}
         >

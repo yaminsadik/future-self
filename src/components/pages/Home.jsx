@@ -96,7 +96,7 @@ export default function Home() {
               <button
                 type="button"
                 onClick={() => setShowAbout(false)}
-                className="btn-primary-sm px-6"
+                className="btn-primary-sm px-6 cursor-pointer"
               >
                 Got it!
               </button>
@@ -116,7 +116,7 @@ export default function Home() {
         <button
           type="button"
           onClick={() => nav("/setup")}
-          className="btn-primary-sm px-10"
+          className="btn-primary-sm px-10 cursor-pointer"
         >
           Start Comparison
         </button>

@@ -116,7 +116,7 @@ export default function Breakdown() {
         <button
           type="button"
           onClick={() => nav(-1)}
-          className="absolute left-0 top-4 text-textPrimary hover:text-primary transition-colors"
+          className="absolute left-0 top-4 text-textPrimary hover:text-primary transition-colors cursor-pointer"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -174,17 +174,6 @@ export default function Breakdown() {
                     </span>
                   )}
                 </div>
-                {diff !== null && (
-                  <span className={`text-sm font-medium ${
-                    parseFloat(diff) > 0.1 
-                      ? "text-emerald-600" 
-                      : parseFloat(diff) < -0.1 
-                        ? "text-rose-600" 
-                        : "text-textSecondary"
-                  }`}>
-                    Δ {parseFloat(diff) > 0 ? "+" : ""}{diff}
-                  </span>
-                )}
               </div>
 
               <div className="space-y-4">
@@ -286,7 +275,7 @@ export default function Breakdown() {
               <button
                 type="button"
                 onClick={() => setShowHowScores(false)}
-                className="btn-primary-sm px-6"
+                className="btn-primary-sm px-6 cursor-pointer"
               >
                 Got it!
               </button>
@@ -295,23 +284,7 @@ export default function Breakdown() {
         </div>
       )}
 
-      {/* Actions */}
-      <div className="mt-8 flex gap-3">
-        <button
-          type="button"
-          onClick={() => nav("/setup")}
-          className="btn-primary-sm flex-1"
-        >
-          New Comparison
-        </button>
-        <button
-          type="button"
-          onClick={() => nav("/")}
-          className="btn-secondary flex-1"
-        >
-          Home
-        </button>
-      </div>
+      {/* Actions removed - back button in header provides navigation */}
 
       <p className="mt-6 mb-8 text-center text-xs text-textSecondary">
         Patterns only, not medical advice.

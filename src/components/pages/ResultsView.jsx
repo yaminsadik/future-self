@@ -74,7 +74,7 @@ export default function ResultsView() {
                 key={c}
                 type="button"
                 onClick={() => setCategory(c)}
-                className={isActive ? "btn-secondary-active" : "btn-secondary"}
+                className={isActive ? "btn-secondary-active cursor-pointer" : "btn-secondary cursor-pointer"}
               >
                 {c}
               </button>
@@ -206,7 +206,7 @@ export default function ResultsView() {
 
       {/* Actions */}
       <div className="mt-8 flex gap-3">
-        <button type="button" onClick={handleReset} className="btn-secondary flex-1">
+        <button type="button" onClick={handleReset} className="btn-secondary flex-1 cursor-pointer">
           Reset
         </button>
         <button type="button" onClick={() => nav("/setup")} className="btn-primary-sm flex-1">
